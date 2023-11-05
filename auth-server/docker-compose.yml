@@ -1,0 +1,17 @@
+version: '3.7'
+
+# Read more: https://www.keycloak.org/getting-started/getting-started-docker
+
+services:
+
+  auth-server:
+    container_name: auth-server
+    image: quay.io/keycloak/keycloak:21.0.2
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    volumes:
+      - ./bootcamp-realm.json:/opt/keycloak/data/import/bootcamp-realm.json
+    ports:
+      - "8888:8080"
+    entrypoint: [ "/opt/keycloak/bin/kc.sh", "start-dev", "--import-realm" ]
