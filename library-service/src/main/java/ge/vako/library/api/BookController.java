@@ -1,8 +1,10 @@
 package ge.vako.library.api;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +36,7 @@ public class BookController {
         return title;
     }
 
-    @Secured("LIBRARY_ADMIN")
+    @Secured("ROLE_LIBRARY_ADMIN")
     @DeleteMapping("/{title}")
     public String deleteBook(@PathVariable String title) {
         for (int i = 0; i < books.size(); i++) {
@@ -44,6 +46,6 @@ public class BookController {
                 return removedTitle;
             }
         }
-        return null;
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Book could not be found");
     }
 }
