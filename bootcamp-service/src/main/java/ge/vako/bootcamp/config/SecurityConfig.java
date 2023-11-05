@@ -47,13 +47,13 @@ public class SecurityConfig {
 
         UserDetails student = User.withDefaultPasswordEncoder()
                 .username("student")
-                .password("pass")
+                .password("test")
                 .roles("STUDENT")
                 .build();
 
         UserDetails teacher = User.withDefaultPasswordEncoder()
                 .username("teacher")
-                .password("pass")
+                .password("test")
                 .roles("TEACHER")
                 .build();
 

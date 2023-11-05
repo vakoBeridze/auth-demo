@@ -35,16 +35,19 @@ In this demo there are 3 roles:
 - `TEACHER` - can do modification and deletion operations in the `bootcamp-service` application.
 - `LIBRARY_ADMIN` - can do modification and deletion operations in the `library-service` application.
 
-There are 3 users in auth-server (These roles are effective only in both applications):
+There are 3 users in auth-server:
 
-- `jon` - has the `STUDENT` role.
-- `james` - has the `TEACHER` role.
-- `laura` - has the `LIBRARY_ADMIN` role.
+- `jon` - Jon Snow - has the `STUDENT` role.
+- `james` - James Zanti - has the `TEACHER` role.
+- `laura` - Laura Admin - has the `LIBRARY_ADMIN` role.
 
-There are built-in users in bootcamp-service (These roles are effective only in the `bootcamp-service`):
+There are 2 built-in users in bootcamp-service, which are effective only in this application and are useful to test *
+*form based** authentication:
 
 - `student` - has the `STUDENT` role.
 - `teacher` - has the `TEACHER` role.
+
+Passwords for all users are `test`.
 
 ## Diagrams
 
