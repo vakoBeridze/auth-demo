@@ -1,6 +1,25 @@
 server:
   port: 8080
 
-
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          bootcamp-auth:
+            provider: keycloak
+            client-name: Bootcamp Authentication Server
+            client-id: bootcamp-service
+            client-secret: W7bTiFEWiegJa0vQlFJPmpJOws3KRccY
+            scope: openid
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+        provider:
+          keycloak:
+            authorization-uri: http://localhost:8888/realms/bootcamp/protocol/openid-connect/auth
+            token-uri: http://localhost:8888/realms/bootcamp/protocol/openid-connect/token
+            user-info-uri: http://localhost:8888/realms/bootcamp/protocol/openid-connect/userinfo
+            user-name-attribute: preferred_username
+            jwk-set-uri: http://localhost:8888/realms/bootcamp/protocol/openid-connect/certs
 
 library-service-url: http://localhost:8081
