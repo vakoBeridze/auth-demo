@@ -24,13 +24,12 @@ The project is divided into 3 modules:
 2. Start the `bootcamp-service` and `library-service` applications by running `mvn spring-boot:run` in their respective
    directories.
 3. Access the applications:
-   - Open the `bootcamp-service` application in your browser at http://localhost:8080
-   - Open the `library-service` application in your browser at http://localhost:8081
+    - Open the `bootcamp-service` application in your browser at http://localhost:8080
+    - Open the `library-service` application in your browser at http://localhost:8081
 
 ## Technical Description
 
-Spring Security uses a security filter chain to authenticate and authorize users. The filter chain is configured in
-the `SecurityConfig.java` class.
+Spring Security uses a security filter chain to authenticate and authorize users.
 
 ![securityfilterchain.png](api-docs%2Fdiagrams%2Fsecurityfilterchain.png)
 
@@ -40,7 +39,7 @@ Bootcamp service provides two types of authentication:
 
 #### 1. Form-based Authentication
 
-To configure form-based authentication, add `.formLogin()` to the `SecurityConfiguration` class. This enables the
+To configure form-based authentication, add `.formLogin()` to the `SecurityConfig` class. This enables the
 default login page provided by Spring Security.
 
 #### 2. OAuth2 Authentication
@@ -120,6 +119,6 @@ All users have the password set as `test`.
 
 - [Spring Security Reference](https://docs.spring.io/spring-security/reference/index.html)
 - [The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749)
-- [Using JWTs as Authorization Grants](https://datatracker.ietf.org/doc/html/rfc7523#section-2.2 )
+- [Using JWTs as Authorization Grants](https://datatracker.ietf.org/doc/html/rfc7523#section-2.2)
 - [Spring Boot and OAuth2](https://spring.io/guides/tutorials/spring-boot-oauth2/)
 - [Keycloak](https://www.keycloak.org/)
