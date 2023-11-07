@@ -39,13 +39,11 @@ public class BookController {
     @Secured("ROLE_LIBRARY_ADMIN")
     @DeleteMapping("/{title}")
     public String deleteBook(@PathVariable String title) {
-        for (int i = 0; i < books.size(); i++) {
-            if (books.get(i).equalsIgnoreCase(title)) {
-                String removedTitle = books.get(i);
-                books.remove(i);
-                return removedTitle;
-            }
+        boolean removed = books.removeIf(book -> book.equalsIgnoreCase(title));
+        if (removed) {
+            return title;
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Book could not be found");
         }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Book could not be found");
     }
 }

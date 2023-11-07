@@ -22,8 +22,8 @@ import java.util.Set;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
-    public static final String REALM_ACCESS_CLAIM = "realm_access";
-    public static final String ROLES_CLAIM = "roles";
+    private static final String REALM_ACCESS_CLAIM = "realm_access";
+    private static final String ROLES_CLAIM = "roles";
     private static final String DEFAULT_ROLE_PREFIX = "ROLE_";
 
     @Bean

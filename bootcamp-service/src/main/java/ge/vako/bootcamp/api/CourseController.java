@@ -31,10 +31,7 @@ public class CourseController {
 
     @GetMapping("/{id}")
     public Course getCourseById(@PathVariable int id) {
-        return courses.stream()
-                .filter(c -> c.getId() == id)
-                .findFirst()
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Course could not be found"));
+        return fetchCourse(id);
     }
 
     @PreAuthorize("hasRole('TEACHER')")
@@ -47,24 +44,25 @@ public class CourseController {
     @PreAuthorize("hasRole('TEACHER')")
     @PutMapping("/{id}")
     public Course updateCourse(@PathVariable int id, @RequestBody Course updatedCourse) {
-        if (id >= 0 && id < courses.size()) {
-            courses.set(id, updatedCourse);
-            return updatedCourse;
-        } else {
-            return null;
-        }
+        Course courseToUpdate = fetchCourse(id);
+        courseToUpdate.setName(updatedCourse.getName());
+        return courseToUpdate;
     }
 
     @PreAuthorize("hasRole('TEACHER')")
     @DeleteMapping("/{id}")
     public Course deleteCourse(@PathVariable int id) {
-        if (id >= 0 && id < courses.size()) {
-            Course removedCourse = courses.get(id);
-            courses.remove(id);
-            return removedCourse;
-        } else {
-            return null;
-        }
+        Course courseToDelete = fetchCourse(id);
+        courses.remove(courseToDelete);
+        return courseToDelete;
+    }
+
+
+    private Course fetchCourse(int id) {
+        return courses.stream()
+                .filter(c -> c.getId() == id)
+                .findFirst()
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Course could not be found"));
     }
 }
 
